@@ -1,0 +1,49 @@
+body {
+    font-family: sans-serif;
+}
+
+.container {  display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 10px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "bio pages";
+    
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+  }
+  
+  .bio {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "img-title"
+      "bio-info";
+    grid-area: bio;
+  }
+  
+  .img-title { grid-area: img-title; }
+
+  .img-title > div > img {
+    width : 200px;
+    height: 200px;
+    border-radius: 20px;
+  }
+  
+  .bio-info { grid-area: bio-info; }
+  
+  .pages { grid-area: pages; }
+
+  .pages .tab-content {
+    display: none;
+  }
+  
+  .pages [id^="tabs"]:checked ~ [id^="tabContent"] {
+    display: block;
+  }

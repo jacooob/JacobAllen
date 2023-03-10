@@ -1,9 +1,68 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+
+<html lang="en">
 <head>
-  <title>My Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Jacob Allen</title>
+  <meta name="description" content="Jacob Allen">
+  <meta name="author" content="Jacob Allen">
+
+  <meta property="og:title" content="Jacob Allen">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Jacob Allen">
+
+  <!-- <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+
+  <link rel="stylesheet" href="css/style.css?v=1.0">
+
 </head>
+
 <body>
-  <h1>Hello, World!</h1>
+  <!-- your content here... -->
+
+  <div class="container">
+    <div class="bio">
+      <div class="img-title">
+        <div><img src="img/coolDog.jpg"></div>
+      </div>
+      <div class="bio-info">
+        <div>
+            <span>Jacob Allen</span>
+        </div>
+        <div>
+            <span>Oakland California</span>
+        </div>
+        <div>
+            <span>jacobeeallen@gmail.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="pages">
+        <div>
+            <input type="radio" name="tabs" id="tabs-about" class="tabs">
+            <label for="tabs-about">about</label>
+            <div id="tabContent-about" class="tab-content">about</div>
+        </div>
+        <div>
+            <input type="radio" name="tabs" id="tabs-work" class="tabs">
+            <label for="tabs-work" >work</label>
+            <div id="tabContent-about" class="tab-content">work</div>
+        </div>
+        <div>
+            <input type="radio" name="tabs" id="tabs-social" class="tabs">
+            <label for="tabs-social">social</label>
+            <div id="tabContent-about" class="tab-content">social</div>
+        </div>
+        <div>
+            <input type="radio" name="tabs" id="tabs-contact" class="tabs">
+            <label for="tabs-contact">contact</label>
+            <div id="tabContent-about" class="tab-content">contact</div>
+        </div>
+    </div>
+  </div>
 </body>
 </html>
