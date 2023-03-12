@@ -1,49 +1,237 @@
 body {
     font-family: sans-serif;
+    margin: 0px;
+}
+.container {  
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 1fr;
+  gap: 0px 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "bio-container pages";
+
+  max-width: 800px;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.container {  display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 10px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "bio pages";
-    
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
+.bio-container {  
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto 1fr;
+  gap: 10px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "bio-image"
+    "bio-name"
+    "bio-mosiac";
+  grid-area: bio-container;
+}
 
-  }
-  
-  .bio {  display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "img-title"
-      "bio-info";
-    grid-area: bio;
-  }
-  
-  .img-title { grid-area: img-title; }
+.bio-image { grid-area: bio-image; }
 
-  .img-title > div > img {
-    width : 200px;
-    height: 200px;
-    border-radius: 20px;
-  }
-  
-  .bio-info { grid-area: bio-info; }
-  
-  .pages { grid-area: pages; }
+.bio-image > img, .bio-mobile-img > img {
+  width: 100%;
+  height: 100%;
+  border-radius:  15px;
+}
 
-  .pages .tab-content {
-    display: none;
-  }
-  
-  .pages [id^="tabs"]:checked ~ [id^="tabContent"] {
-    display: block;
-  }
+.bio-name { 
+  grid-area: bio-name;
+  background-color: goldenrod;
+  padding: 20px 10px 20px 10px;
+  border-radius:  15px;
+}
+
+.bio-mobile-name {
+  background-color: goldenrod;
+  padding: 20px 10px 20px 10px;
+  border-radius:  15px;
+}
+
+.bio-mosiac {  
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  grid-template-rows: 0.5fr 1fr;
+  gap: 10px 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "mosiac-tile1 mosiac-tile2"
+    "mosiac-tile3 mosiac-tile4";
+  grid-area: bio-mosiac;
+}
+
+.mosiac-tile1 { 
+  grid-area: mosiac-tile1;
+  background: red;
+  border-radius:  15px;
+ }
+
+.mosiac-tile2 {
+  grid-area: mosiac-tile2;
+  background: yellow;
+  border-radius:  15px;
+ }
+
+.mosiac-tile3 {
+  grid-area: mosiac-tile3;
+  background-color: blue;
+  border-radius:  15px;
+ }
+
+.mosiac-tile4 { 
+  grid-area: mosiac-tile4; 
+  background-color: green;
+  border-radius:  15px;
+}
+
+.pages {  
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "page-tabs"
+    "page-content-container";
+  grid-area: pages;
+}
+
+.page-tabs {
+  display: grid; 
+  grid-template-columns: auto auto auto auto 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 10px; 
+  grid-template-areas: 
+    "page-tab-about page-tab-work page-tab-social page-tab-contact page-tab-empty"; 
+  grid-area: page-tabs; 
+}
+
+.page-tab-about { grid-area: page-tab-about; }
+.page-tab-work { grid-area: page-tab-work; }
+.page-tab-social { grid-area: page-tab-social; }
+.page-tab-contact { grid-area: page-tab-contact; }
+.page-tab-empty { grid-area: page-tab-empty; }
+
+.page-tab {
+  background-color: tan;
+  padding: 10px 20px 10px 20px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.page-content-container { 
+  grid-area: page-content-container;
+  background-color: tan;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 10px;
+}
+
+.bio-mobile-name, .bio-mobile-header {
+  display: none;
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .bio-mobile-name, .bio-mobile-header {
+        display: unset;
+    }
+
+    .bio-image, .bio-name, .bio-mosiac {
+      display: none;
+    }
+
+    .container {  display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "bio-container"
+        "pages";
+    }
+
+    .bio-container {  display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 150px auto;
+      gap: 10px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "bio-mobile-header"
+        "bio-mobile-name";
+      grid-area: bio-container;
+    }
+
+    .bio-mobile-name { grid-area: bio-mobile-name; }
+
+    .bio-mobile-header {  display: grid;
+      grid-template-columns: 150px 1fr;
+      grid-template-rows: 1fr;
+      gap: 0px 10px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "bio-mobile-img bio-mobile-mosiac";
+      grid-area: bio-mobile-header;
+    }
+
+    .bio-mobile-mosiac {  display: grid;
+      grid-template-columns: 0.5fr 1fr;
+      grid-template-rows: 0.5fr 1fr;
+      gap: 10px 10px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "mosiac-tile1 mosiac-tile2"
+        "mosiac-tile3 mosiac-tile4";
+      grid-area: bio-mobile-mosiac;
+    }
+
+    .mosiac-tile1 { grid-area: mosiac-tile1; }
+
+    .mosiac-tile3 { grid-area: mosiac-tile3; }
+
+    .mosiac-tile2 { grid-area: mosiac-tile2; }
+
+    .mosiac-tile4 { grid-area: mosiac-tile4; }
+
+    .bio-mobile-img { grid-area: bio-mobile-img; }
+
+    .pages {  display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "page-tabs"
+        "page-content-container";
+      grid-area: pages;
+    }
+
+    .page-tabs {  display: grid;
+      grid-template-columns: auto auto auto auto 1fr;
+      grid-template-rows: 1fr;
+      gap: 0px 5px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "page-tab-about page-tab-work page-tab-social page-tab-contact page-tab-empty";
+      grid-area: page-tabs;
+    }
+
+    .page-tab-about { grid-area: page-tab-about; }
+
+    .page-tab-work { grid-area: page-tab-work; }
+
+    .page-tab-social { grid-area: page-tab-social; }
+
+    .page-tab-contact { grid-area: page-tab-contact; }
+
+    .page-tab-empty { grid-area: page-tab-empty; }
+
+    .page-content-container { grid-area: page-content-container; }
+
+
+}
