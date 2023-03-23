@@ -1,3 +1,16 @@
+:root {
+ --myred: #e94f37;
+ --myyellow: #ffc857;
+ --myblue:  #004e98;
+ --mygreen: #56876d;
+ --myblack: #39393a;
+ --mybrown: #504136;
+ --mypurple: #dbbbf5;
+ --folder: #F0DCAF;
+}
+
+
+
 body {
     font-family: sans-serif;
     margin: 0px;
@@ -5,16 +18,16 @@ body {
 .container {  
   display: grid;
   grid-template-columns: 30% 70%;
-  grid-template-rows: 1fr;
-  gap: 0px 10px;
+  grid-template-rows: 500px;
+  gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
     "bio-container pages";
 
   max-width: 800px;
-
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
 }
 
 .bio-container {  
@@ -28,6 +41,7 @@ body {
     "bio-name"
     "bio-mosiac";
   grid-area: bio-container;
+  margin-left: 10px;
 }
 
 .bio-image { grid-area: bio-image; }
@@ -40,13 +54,12 @@ body {
 
 .bio-name { 
   grid-area: bio-name;
-  background-color: goldenrod;
+  background-color: var(--mypurple);
   padding: 20px 10px 20px 10px;
   border-radius:  15px;
 }
 
 .bio-mobile-name {
-  background-color: goldenrod;
   padding: 20px 10px 20px 10px;
   border-radius:  15px;
 }
@@ -65,25 +78,25 @@ body {
 
 .mosiac-tile1 { 
   grid-area: mosiac-tile1;
-  background: red;
+  background: var(--myred);
   border-radius:  15px;
  }
 
 .mosiac-tile2 {
   grid-area: mosiac-tile2;
-  background: yellow;
+  background: var(--myyellow);
   border-radius:  15px;
  }
 
 .mosiac-tile3 {
   grid-area: mosiac-tile3;
-  background-color: blue;
+  background-color: var(--myblue);
   border-radius:  15px;
  }
 
 .mosiac-tile4 { 
   grid-area: mosiac-tile4; 
-  background-color: green;
+  background-color: var(--mygreen);
   border-radius:  15px;
 }
 
@@ -97,6 +110,12 @@ body {
     "page-tabs"
     "page-content-container";
   grid-area: pages;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  border-bottom: solid var(--folder) 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 .page-tabs {
@@ -116,25 +135,78 @@ body {
 .page-tab-empty { grid-area: page-tab-empty; }
 
 .page-tab {
-  background-color: tan;
-  padding: 10px 20px 10px 20px;
+  background-color: var(--folder);
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
 }
 
+.page-tab input {
+  display: none;
+}
+
+.page-tab label {
+  display: block;
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+  border-bottom: solid 3px rgba(0, 0, 0, 0.1);
+}
+
+.page-tab > input:checked+label {
+  border-bottom: none;
+}
+
+
+
 .page-content-container { 
   grid-area: page-content-container;
-  background-color: tan;
-  border-top-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  background-color: var(--folder);
+  
   padding: 10px;
+  overflow: auto;
+  border-top: solid var(--folder) 15px;
+  border-top-right-radius: 15px;;
+}
+
+.page-content {
+  display: none;
+}
+
+.page-content.active {
+  display: block;
 }
 
 .bio-mobile-name, .bio-mobile-header {
   display: none;
 }
 
+.bio-name {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+/* width */
+.page-content-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.page-content-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+ 
+/* Handle */
+.page-content-container::-webkit-scrollbar-thumb {
+  background: #888888; 
+}
+
+/* Handle on hover */
+.page-content-container::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 
 @media screen and (max-width: 600px) {
 
@@ -146,9 +218,10 @@ body {
       display: none;
     }
 
-    .container {  display: grid;
+    .container {  
+      display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: auto 500px;
       gap: 10px 0px;
       grid-auto-flow: row;
       grid-template-areas:
@@ -158,16 +231,24 @@ body {
 
     .bio-container {  display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 150px auto;
+      grid-template-rows: auto auto;
       gap: 10px 0px;
       grid-auto-flow: row;
       grid-template-areas:
         "bio-mobile-header"
         "bio-mobile-name";
       grid-area: bio-container;
+      margin: 10px 10px 0px 10px;
     }
 
-    .bio-mobile-name { grid-area: bio-mobile-name; }
+    .bio-mobile-name { 
+      grid-area: bio-mobile-name; 
+      background-color: var(--mypurple);
+      display: flex;
+      justify-content: space-between;
+      padding-right: 30px;
+      padding-left: 30px;
+    }
 
     .bio-mobile-header {  display: grid;
       grid-template-columns: 150px 1fr;
@@ -209,6 +290,7 @@ body {
         "page-tabs"
         "page-content-container";
       grid-area: pages;
+      
     }
 
     .page-tabs {  display: grid;
